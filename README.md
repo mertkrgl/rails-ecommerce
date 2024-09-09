@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 # README
-=======
-# rails-ecommerce
-
-README
->>>>>>> 02e17eb (fix)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
