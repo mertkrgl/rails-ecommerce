@@ -1,0 +1,23 @@
+<div class="container mx-auto p-10">
+  <div class="mb-4 text-center">
+    <h1 class="text-3xl font-bold mb-4">
+      Rails Shop'a Hoşgeldin, <%= @user.first_name %>
+    </h1>
+
+    <div class="flex justify-center">
+      <%= image_tag 'images.png', class: 'w-auto h-auto' %>
+    </div>
+  </div>
+
+  <!-- Butonlar -->
+  <div class="flex justify-center space-x-6 mb-4">
+    <%= link_to 'Tüm ürünleri gör', products_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+    <%= link_to 'Sepete git', cart_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+
+    <% if @user.role == "admin" %>
+      <%= link_to 'Ürün ekle', new_product_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+    <% end %>
+
+    <%= button_to "Çıkış yap", logout_path, method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+</div>

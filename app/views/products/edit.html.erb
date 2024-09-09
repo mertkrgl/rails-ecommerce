@@ -1,0 +1,40 @@
+<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-md shadow-md">
+
+<h1 class="text-3xl font-bold mb-6 text-center">Ürünü Düzenle</h1>
+
+<%= form_with model: @product, local: true, class: "max-w-lg mx-auto bg-white p-6 rounded-md shadow-md" do |form| %>
+  <div class="mb-4">
+    <%= form.label :name, "Ürün Adı", class: "block text-sm font-medium text-gray-700" %>
+    <% if @product.errors[:name].present? %>
+      <p class="text-red-900 text-sm"><%= @product.errors[:name].join(', ') %></p>
+    <% end %>
+    <%= form.text_field :name, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :description, "Açıklama", class: "block text-sm font-medium text-gray-700" %>
+      <% if @product.errors[:description].present? %>
+      <p class="text-red-500 text-sm"><%= @product.errors[:description].join(', ') %></p>
+    <% end %>
+    <%= form.text_area :description, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :price, "Fiyat", class: "block text-sm font-medium text-gray-700" %>
+    <% if @product.errors[:price].present? %>
+      <p class="text-red-500 text-sm"><%= @product.errors[:price].join(', ') %></p>
+    <% end %>
+    <%= form.number_field :price, step: 0.01, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+  </div>
+
+  <div class="flex justify-center">
+    <%= form.submit "Değişiklikleri Kaydet", class: "w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-700" %>
+  </div>
+<% end %>
+
+
+<div class="text-center mt-4">
+  <%= link_to 'Geri dön', home_path%>
+</div>
+
+</div>

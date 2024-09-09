@@ -1,0 +1,29 @@
+<div class="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg ">
+  <h1 class="text-4xl font-bold mb-4 text-center"><%= @product.name %></h1>
+  <p class="text-lg mb-4"><%= @product.description %></p>
+  <p class="text-xl font-semibold mb-4">Fiyat: <%=@product.price%>₺</p>
+
+  <% if current_user.role == "admin" %>
+    <div class="mb-6 text-center">
+      <%= link_to 'Ürünü düzenle', edit_product_path(@product), class: "text-red-600  text-lg" %>
+    </div>
+  <% end %>
+
+  <%= form_with url: cart_add_path, method: :post, local: true, class: "p-4 " do %>
+
+    <div class="flex items-center justify-center mb-4">
+      <label for="quantity" class="text-sm font-medium text-gray-700 mr-2 content-center">Adet:</label>
+      <%= number_field_tag :quantity, 1, class: "w-20 px-3 py-2 border border-gray-300 rounded-md" %>
+      <%= hidden_field_tag :product_id, @product.id %>
+    </div>
+
+    <div class="flex justify-center mb-4">
+      <%= submit_tag "Sepete ekle", class: "bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-lg " %>
+    </div>
+  <% end %>
+
+  <div class="text-center">
+    <%= link_to 'Geri dön', products_path, class: "text-red-600 text-lg" %>
+    <%= link_to 'Sepete git', cart_path, class: "ml-4 text-red-600 text-lg" %>
+  </div>
+</div>
